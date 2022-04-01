@@ -14,6 +14,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
       - name: Docker Login
         uses: docker/login-action@v1.14.1
         with:
@@ -23,10 +24,12 @@ jobs:
       - name: Docker Build and Push
         uses: docker/build-push-action@v2.7.0
         with:
-          context ./src
+          context: ./src
           file: ./src/Dockerfile
           push: true
           tags: |
             ledomartinelli/rotten-potatoes:latest
             ledomartinelli/rotten-potatoes:${{ github.run_number }}
+          
+          
         
